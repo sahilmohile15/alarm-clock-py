@@ -1,0 +1,4 @@
+playsound==1.2.2
+style==1.1.0
+tk==0.1.0
+update==0.0.1
