@@ -4,12 +4,13 @@ import os
 import tkinter as tk
 import datetime as dt
 from playsound import playsound
-import array
+
 
 #Creating Window and Label
 window = tk.Tk()
 title = tk.Label(text="Alarm Clock")
 title.pack()
+
 
 t1 = dt.time(hour=13,minute=15)
 t2 = dt.time(hour=12,minute=54)
