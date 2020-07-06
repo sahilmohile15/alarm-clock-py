@@ -2,69 +2,56 @@
 
 import os
 import sys
-import tkinter as tk
+from tkinter import *
+from tkinter.ttk import *
 import datetime as dt
 from playsound import playsound
 
-'''
-#Creating Window and Label
-window = tk.Tk()
-title = tk.Label(text="Alarm Clock")
-title.pack()
-'''
 
-t1 = dt.time(hour=14,minute=39)
-t2 = dt.time(hour=14,minute=43)
+#Getting Time Table
+t1 = dt.time(hour = 17, minute= 29)
+t2 = dt.time(hour= 17, minute= 35)
 timetable = [t1, t2]
-'''
 
-#Adding a button to stop time
-sButton = tk.Button(
-    text="Stop",
-    bg = "blue",
-    fg = "red",
-    width = 15,
-    height= 3,
-    command = stop
-)
+#Creating Window and Label
+root = Tk() 
+root.title('Alarm Clock') 
+  
+# This function is used to  
+# display time on the label 
+def time(): 
+    string = dt.datetime.now()
+    lbl.config(text = string) 
+    lbl.after(1000, time) 
+  
+# Styling the label widget so that clock 
+# will look more attractive 
+lbl = Label(root, font = ('calibri', 40, 'bold'), 
+            background = 'green', 
+            foreground = 'white') 
+  
+# Placing clock at the centre 
+# of the tkinter window 
+lbl.pack(anchor = 'center') 
+time() 
+  
 
-sButton.pack()
-
-#Function to stop execution of code
-def stop():
-    exit()
-'''
 #def alarm():
 for elt in timetable:
     i_time = elt
     #i_minute = i.minute
     while True:
         if i_time <= dt.datetime.now().time():
-        #if i_hour == dt.datetime.now().hour and i_minute == dt.datetime.now().minute:
-            #current_time = tk.Label(text = dt.datetime.now())
-            #current_time.pack()
-            #playsound('media/ClassAlarm.mp3')
-            print("Its time")
+            playsound('media/ClassAlarm.mp3', False)
+            alm.config(text= "Its Time to end class")
             break
 
+frame1 = Frame(root)
+frame1.pack()
+frame1.config(height = 100, width = 100)
 
+alm = Label(frame1)
+alm.pack()
 
-window.mainloop()
+root.mainloop()
 
-
-'''
-for elt in timetable:
-  time = dt.datetime.now().time()
-  if time - elt < 0:
-    break
-  while(True):    
-    if time == elt:
-      print("you did it")
-
-current_hour = dt.datetime.now().hour
-current_min = dt.datetime.now().minute
-alarm = any(i.hour == current_hour and i.minute == current_min for i in timetable)
-
-print(alarm)
-
-'''
