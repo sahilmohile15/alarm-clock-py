@@ -31,8 +31,8 @@ import os
 import pygame as pg
 
 try:
-    import numpy as np
-    import numpy.random as np_random
+    from numpy import *
+    from numpy.random import *
 except ImportError:
     raise SystemExit("This example requires numpy and the pygame surfarray module")
 
@@ -53,17 +53,17 @@ def stopwatch(message=None):
 
 def VertGradientColumn(surf, topcolor, bottomcolor):
     "creates a new 3d vertical gradient array"
-    topcolor = np.array(topcolor, copy=False)
-    bottomcolor = np.array(bottomcolor, copy=False)
+    topcolor = array(topcolor, copy=0)
+    bottomcolor = array(bottomcolor, copy=0)
     diff = bottomcolor - topcolor
     width, height = surf.get_size()
     # create array from 0.0 to 1.0 triplets
-    column = np.arange(height, dtype="float") / height
-    column = np.repeat(column[:, np.newaxis], [3], 1)
+    column = arange(height, dtype="float") / height
+    column = repeat(column[:, newaxis], [3], 1)
     # create a single column of gradient
     column = topcolor + (diff * column).astype("int")
     # make the column a 3d image column by adding X
-    column = column.astype("uint8")[np.newaxis, :, :]
+    column = column.astype("uint8")[newaxis, :, :]
     # 3d array into 2d array
     return pg.surfarray.map_array(surf, column)
 
@@ -71,7 +71,7 @@ def VertGradientColumn(surf, topcolor, bottomcolor):
 def DisplayGradient(surf):
     "choose random colors and show them"
     stopwatch()
-    colors = np_random.randint(0, 255, (2, 3))
+    colors = randint(0, 255, (2, 3))
     column = VertGradientColumn(surf, colors[0], colors[1])
     pg.surfarray.blit_array(surf, column)
     pg.display.flip()
