@@ -1,4 +1,9 @@
 playsound==1.2.2
+pygame==2.0.0.dev8
+ruamel.yaml==0.16.10
+ruamel.yaml.clib==0.2.0
 style==1.1.0
 tk==0.1.0
 update==0.0.1
+vext==0.7.3
+vext.gi==0.7.0
